@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теди ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ff69b4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rose pattern background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌹%3C/text%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='70'%3E🌸%3C/text%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E🌺%3C/text%3E%3C/svg%3E");
+            background-size: 150px 150px, 120px 120px, 100px 100px;
+            background-position: 10% 20%, 70% 60%, 40% 80%;
+            background-repeat: repeat;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-30px) rotate(10deg); opacity: 0.3; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .question-text {
+            color: #c71585;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 20px 50px;
+        }
+
+        .btn-yes:hover {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+            color: #8b4513;
+            padding: 15px 40px;
+        }
+
+        .btn-no:hover {
+            background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+        }
+
+        /* Panda page styles */
+        .panda-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ff69b4 100%);
+            position: relative;
+        }
+
+        .panda-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌹%3C/text%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='70'%3E🌸%3C/text%3E%3C/svg%3E");
+            background-size: 150px 150px, 120px 120px;
+            background-position: 10% 20%, 70% 60%;
+            background-repeat: repeat;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .panda-container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .panda {
+            font-size: 200px;
+            animation: dance 1s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: rotate(-10deg) scale(1); }
+            25% { transform: rotate(10deg) scale(1.1); }
+            50% { transform: rotate(-10deg) scale(1); }
+            75% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .success-message {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Question Page -->
+    <div id="mainPage" class="container">
+        <!-- Floating hearts -->
+        <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;">💕</div>
+        <div class="heart" style="top: 20%; right: 15%; animation-delay: 1s;">💖</div>
+        <div class="heart" style="bottom: 20%; left: 15%; animation-delay: 2s;">💗</div>
+        <div class="heart" style="bottom: 10%; right: 10%; animation-delay: 3s;">💝</div>
+        
+        <h1>❤️ За Теди ❤️</h1>
+        <div id="questionText" class="question-text"></div>
+        <div class="buttons">
+            <button id="btnYes" class="btn-yes" onclick="handleYes()">Да 💕</button>
+            <button id="btnNo" class="btn-no" onclick="handleNo()">Не 😢</button>
+        </div>
+    </div>
+
+    <!-- Panda Success Page -->
+    <div id="pandaPage" class="panda-page">
+        <div class="panda-container">
+            <div class="panda">🐼</div>
+            <div class="success-message">Урааа! 🎉<br>Обичам те! ❤️</div>
+        </div>
+    </div>
+
+    <script>
+        let noCount = 0;
+        const messages = [
+            "Теди, ще бъдеш ли моето гадже? 💕",
+            "Наистина ли? 😢",
+            "Сигурна? 🤔",
+            "Помисли си пак! 🥺",
+            "Последен шанс! 💔"
+        ];
+
+        const yesSizes = [1, 1.3, 1.7, 2.2, 2.8, 3.5];
+        const noSizes = [1, 0.8, 0.6, 0.4, 0.2, 0];
+
+        // Set initial question
+        document.getElementById('questionText').textContent = messages[0];
+
+        function handleNo() {
+            noCount++;
+            
+            if (noCount >= 5) {
+                // Hide the no button completely
+                document.getElementById('btnNo').style.display = 'none';
+                document.getElementById('questionText').textContent = "Нямаш избор вече! 😏";
+                
+                // Make yes button huge
+                const yesBtn = document.getElementById('btnYes');
+                yesBtn.style.transform = `scale(4)`;
+                yesBtn.style.padding = '40px 80px';
+            } else {
+                // Update question text
+                document.getElementById('questionText').textContent = messages[noCount];
+                
+                // Make yes button bigger
+                const yesBtn = document.getElementById('btnYes');
+                yesBtn.style.transform = `scale(${yesSizes[noCount]})`;
+                
+                // Make no button smaller
+                const noBtn = document.getElementById('btnNo');
+                noBtn.style.transform = `scale(${noSizes[noCount]})`;
+                
+                // Hide no button when it gets too small
+                if (noSizes[noCount] <= 0.1) {
+                    noBtn.style.display = 'none';
+                }
+            }
+        }
+
+        function handleYes() {
+            // Hide main page
+            document.getElementById('mainPage').style.display = 'none';
+            
+            // Show panda page
+            const pandaPage = document.getElementById('pandaPage');
+            pandaPage.style.display = 'flex';
+            
+            // Create confetti
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb', '#ff6b9d', '#c71585', '#ff4757', '#ff6348'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    document.getElementById('pandaPage').appendChild(confetti);
+                    
+                    // Remove after animation
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 50);
+            }
+            
+            // Keep creating confetti
+            setInterval(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                document.getElementById('pandaPage').appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
